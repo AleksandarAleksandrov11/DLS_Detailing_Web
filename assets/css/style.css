@@ -96,7 +96,8 @@ header {
 }
 
 .cta-button:hover {
-    background-color: white;
+    background-color: white !important;
+    color: #000000 !important;
     transform: scale(1.05);
 }
 
