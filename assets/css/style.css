@@ -871,7 +871,7 @@ header {
 .social-icon {
     width: 30px;
     height: 30px;
-    background-color: var(--primary-color);
+    background-color: var(--primary-color) !important;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -881,7 +881,7 @@ header {
 
 .social-icon:hover {
     transform: scale(1.1);
-    background-color: white;
+    background-color: white !important;
 }
 
 .social-icon svg {
@@ -928,7 +928,7 @@ header {
 }
 
 .footer-links a:hover {
-    color: var(--primary-color);
+    color: var(--primary-color) !important;
 }
 
 .footer-links a::before {
@@ -1099,7 +1099,6 @@ header {
 
     .commitment-section {
         flex-direction: column;
-        padding: 60px 15px;
     }
 
     .commitment-image {
@@ -1107,15 +1106,12 @@ header {
     }
 
     .section-title {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
+        text-align: center;
     }
 
     .process-section {
         padding: 60px 15px;
-    }
-
-    .section-title {
-        font-size: 1.8rem;
     }
 
     .process-steps {
