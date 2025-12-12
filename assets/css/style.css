@@ -24,6 +24,23 @@ body {
     padding: 0 20px;
 }
 
+main {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUpMain 1.4s ease-out forwards;
+}
+
+@keyframes fadeInUpMain {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* ==================== HEADER ==================== */
 header {
     background-color: var(--secondary-color);
