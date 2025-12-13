@@ -1,0 +1,406 @@
+:root {
+    --primary-color: #e3be57;
+    --secondary-color: #000000;
+    --text-color: #FFFFFF;
+    --dark-bg: #0F0F0F;
+    --card-bg: rgba(25, 25, 25, 0.7);
+    --border-color: rgba(255, 215, 0, 0.3);
+    --card-hover: rgba(35, 35, 35, 0.9);
+}
+
+.white-text {
+    color: #ffffff;
+}
+
+.container-about {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero-services {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.hero-badge-services {
+    display: inline-block;
+    background: var(--primary-color);
+    color: black;
+    padding: 8px 24px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(227, 190, 87, 0.4);
+    margin-top: 15%;
+}
+
+.hero-bg-contact {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.859), rgba(0, 0, 0, 0.859)),
+        url('../img/hero-content-contact-background.jpg') center/cover no-repeat;
+    z-index: -1;
+}
+
+.about-section-about {
+    padding: 60px 0;
+    background-color: #1f1e1e;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.section-title-about {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
+}
+
+.section-title-after-about {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.about-content-about {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+}
+
+.about-text-about {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-text-h2-about {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.about-text-p-about {
+    margin-bottom: 20px;
+    color: #cccccc;
+}
+
+.about-list-about {
+    list-style: none;
+}
+
+.about-item-about {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.about-item-icon-about {
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary-color);
+    border-radius: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: var(--secondary-color);
+    font-size: 14px;
+}
+
+.about-item-text-about h3 {
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.about-item-text-about p {
+    font-size: 0.9rem;
+    color: #cccccc;
+}
+
+.about-image-about {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+}
+
+.about-image-img-about {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.experience-badge-about {
+    position: absolute;
+    bottom: -20px;
+    left: 20px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.experience-number-about {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.experience-text-about {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Contact Section */
+.contact-section-about {
+    padding: 60px 0;
+    background-color: #121212;
+}
+
+.contact-content-about {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.contact-info-about {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-title-about {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.contact-details-about {
+    list-style: none;
+}
+
+.contact-item-about {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.contact-icon-about {
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: var(--secondary-color);
+    font-size: 14px;
+}
+
+.contact-text-about h3 {
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.contact-text-about p,
+.contact-text-about a {
+    font-size: 0.9rem;
+    color: #cccccc;
+    text-decoration: none;
+}
+
+.contact-text-about a:hover {
+    color: var(--primary-color);
+}
+
+.working-hours-about {
+    margin-top: 20px;
+}
+
+.working-hours-h3-about {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.working-hours-list-about {
+    list-style: none;
+}
+
+.working-hours-item-about {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.working-hours-day-about {
+    color: #cccccc;
+}
+
+.working-hours-time-about {
+    color: var(--primary-color);
+}
+
+.contact-form-about {
+    flex: 1;
+    min-width: 300px;
+    background-color: var(--card-bg);
+    padding: 30px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.form-title-about {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.form-group-about {
+    margin-bottom: 20px;
+}
+
+.form-label-about {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-input-about,
+.form-select-about,
+.form-textarea-about {
+    width: 100%;
+    padding: 12px;
+    background-color: rgba(30, 30, 30, 0.8);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.form-input-about:focus,
+.form-select-about:focus,
+.form-textarea-about:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.form-file-about {
+    padding: 12px;
+    background-color: rgba(30, 30, 30, 0.8);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.form-file-about:hover {
+    background-color: rgba(40, 40, 40, 0.8);
+}
+
+.form-file-input-about {
+    display: none;
+}
+
+.file-upload-label-about {
+    display: block;
+    padding: 12px;
+    background-color: rgba(30, 30, 30, 0.8);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.file-upload-label-hover-about:hover {
+    background-color: rgba(40, 40, 40, 0.8);
+}
+
+.file-upload-text-about {
+    display: block;
+    font-size: 0.9rem;
+    color: #cccccc;
+    margin-top: 5px;
+}
+
+.file-list-about {
+    margin-top: 10px;
+    display: none;
+}
+
+.file-item-about {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background-color: rgba(50, 50, 50, 0.5);
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+.file-name-about {
+    font-size: 0.9rem;
+    color: #cccccc;
+}
+
+.file-remove-about {
+    color: #ff4444;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.form-submit-about {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-submit-hover-about:hover {
+    background-color: white;
+}
+
+@media (max-width: 992px) {
+
+    .hero-badge-services {
+        font-size: 0.8rem;
+    }
+
+    .container-about {
+        padding: 0 10px;
+    }
+
+    .about-text-h2-about {
+        text-align: center;
+    }
+
+}

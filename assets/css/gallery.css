@@ -8,6 +8,10 @@
     --card-hover: rgba(35, 35, 35, 0.9);
 }
 
+.white-text {
+    color: #ffffff;
+}
+
 .hero-services {
     position: relative;
     min-height: 90vh;
