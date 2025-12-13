@@ -1,0 +1,380 @@
+/* ==================== HEADER ==================== */
+header {
+    background-color: var(--secondary-color);
+    height: 100px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo img {
+    height: 140px;
+    width: auto;
+    transition: height 0.3s ease;
+}
+
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-menu a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: large;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: var(--primary-color);
+}
+
+.cta-button {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: white !important;
+    color: #000000 !important;
+    transform: scale(1.05);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+    width: 50px;
+    height: 50px;
+}
+
+.menu-toggle span,
+.menu-toggle span::before,
+.menu-toggle span::after {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.menu-toggle span::before,
+.menu-toggle span::after {
+    content: '';
+    position: absolute;
+    left: 0;
+}
+
+.menu-toggle span::before {
+    top: -10px;
+}
+
+.menu-toggle span::after {
+    top: 10px;
+}
+
+.menu-toggle.open span {
+    background: transparent;
+}
+
+.menu-toggle.open span::before {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.menu-toggle.open span::after {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+}
+
+.menu-overlay.active {
+    display: block;
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+    background-color: #0a0a0a;
+    padding: 50px 20px 30px;
+    border-top: 1px solid var(--primary-color);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo img {
+    width: 150px;
+    height: 150px;
+    margin-right: 10px;
+    margin-top: -10%;
+}
+
+.footer-description {
+    font-size: 0.85rem;
+    color: #aaaaaa;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary-color) !important;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+    background-color: white !important;
+}
+
+.social-icon svg {
+    width: 16px;
+    height: 16px;
+    fill: #121212;
+}
+
+.footer-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #aaaaaa;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color) !important;
+}
+
+.footer-links a::before {
+    content: '>';
+    font-size: 0.8rem;
+    color: var(--primary-color);
+}
+
+.contact-info {
+    list-style: none;
+}
+
+.contact-info li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.contact-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+.contact-text {
+    font-size: 0.9rem;
+    color: #aaaaaa;
+    line-height: 1.5;
+}
+
+.contact-text strong {
+    color: #ffffff;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #222;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    color: #aaaaaa;
+}
+
+.footer-legal {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-legal a {
+    color: #aaaaaa;
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+    color: var(--primary-color);
+}
+
+@media (max-width: 992px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .logo img {
+        height: 100px;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.98);
+        backdrop-filter: blur(10px);
+        transition: right 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        padding-top: 120px;
+        z-index: 1000;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.7);
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 0;
+        padding: 0 30px;
+    }
+
+    .nav-menu li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 20px 0;
+        font-size: 1.4rem;
+    }
+
+    .cta-button {
+        display: block;
+        margin: 30px auto;
+        text-align: center;
+        width: 80%;
+        padding: 15px;
+    }
+        .footer {
+        padding: 50px 20px 20px;
+    }
+
+    .footer-container {
+        gap: 30px;
+    }
+
+    .footer-column {
+        min-width: 200px;
+    }
+
+    .footer-logo h1 {
+        font-size: 1.3rem;
+    }
+
+    .footer-title {
+        font-size: 0.9rem;
+    }
+
+    .footer-links a {
+        font-size: 0.85rem;
+    }
+
+    .contact-text {
+        font-size: 0.85rem;
+    }
+}

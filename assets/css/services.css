@@ -1,0 +1,440 @@
+:root {
+    --primary-color: #e3be57;
+    --secondary-color: #000000;
+    --text-color: #FFFFFF;
+    --dark-bg: #0F0F0F;
+    --card-bg: rgba(25, 25, 25, 0.7);
+    --border-color: rgba(255, 215, 0, 0.3);
+    --card-hover: rgba(35, 35, 35, 0.9);
+}
+
+/* ==================== SERVICES PAGE ==================== */
+.hero-services {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.hero-badge-services {
+    display: inline-block;
+    background: var(--primary-color);
+    color: black;
+    padding: 8px 24px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(227, 190, 87, 0.4);
+    margin-top: 15%;
+}
+
+.hero-bg-services {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.859), rgba(0, 0, 0, 0.859)),
+        url('../img/hero-content-services-background.jpg') center/cover no-repeat;
+    z-index: -1;
+}
+
+.services-section-services {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Full width background image for the entire screen width */
+.services-section-services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    opacity: 0.05;
+    z-index: -1;
+}
+
+.section-title-services {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 2;
+}
+
+.section-title-services span:first-child {
+    color: var(--text-color);
+}
+
+.section-title-services span:last-child {
+    color: var(--primary-color);
+}
+
+.section-subtitle-services {
+    text-align: center;
+    color: #aaaaaa;
+    font-size: 1rem;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.services-grid-services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.service-card-services {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
+}
+
+.service-card-services:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgb(255, 255, 255);
+    background: var(--card-hover);
+}
+
+.service-icon-services {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.service-title-services {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+}
+
+.service-description-services {
+    color: #cccccc;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.service-price-services {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.explore-button-services {
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.explore-button-services:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.arrow-services {
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+}
+
+/* Background images for each service card */
+.service-card-services:nth-child(1)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../img/detallado-integral.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.service-card-services:nth-child(2)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../img/detallado-interior.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.service-card-services:nth-child(3)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../img/lavado-basico.JPG') no-repeat center center;
+    background-size: cover;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.service-card-services:nth-child(4)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../img/lavado-asientos.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.service-card-services:nth-child(5)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../img/domicilio.JPG') no-repeat center center;
+    background-size: cover;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.service-card-services:nth-child(6)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../img/pulido-faros.JPG') no-repeat center center;
+    background-size: cover;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.services-details-section-services {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.services-details-section-services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../img/services-details-content-background.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.2;
+    z-index: -1;
+    border-radius: 20px;
+    border: 3px solid var(--primary-color);
+    margin-bottom: 5%;
+}
+
+.section-title-services {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 2;
+}
+
+.section-title-services span:first-child {
+    color: var(--text-color);
+}
+
+.section-title-services span:last-child {
+    color: var(--primary-color);
+}
+
+.section-title-services::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 4px;
+    background: var(--primary-color);
+    z-index: 1;
+}
+
+.services-details-grid-services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.service-detail-card-services {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(193, 191, 191, 0.199);
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+.service-detail-card-services:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    background: var(--card-hover);
+}
+
+.service-detail-title-services {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.service-detail-description-services {
+    color: #cccccc;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.service-detail-features-services {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.service-detail-feature-services {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    color: #cccccc;
+    font-size: 0.9rem;
+}
+
+.feature-icon-services {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.service-detail-duration-services {
+    color: #aaaaaa;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.reserve-button-services {
+    display: inline-block;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    text-align: center;
+    width: 100%;
+}
+
+.reserve-button-services:hover {
+    background: white;
+    transform: scale(1.05);
+}
+
+#nuestros-servicios,
+#contact,
+#detallado-integral,
+#detallado-interior,
+#lavado-basico,
+#detallado-integral1,
+#detallado-interior1,
+#lavado-basico1,
+#lavado-asientos,
+#servicio-domicilio,
+#pulido-faros {
+    scroll-margin-top: 100px;
+}
+
+@media (max-width: 992px) {
+        .services-section-services {
+        padding: 2rem 1rem;
+    }
+
+    .section-title-services {
+        font-size: 2rem;
+    }
+
+    .services-grid-services {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card-services {
+        padding: 1.5rem;
+    }
+
+    .services-details-section-services {
+        padding: 2rem 1rem;
+    }
+
+    .section-title-services {
+        font-size: 2rem;
+    }
+
+    .services-details-grid-services {
+        grid-template-columns: 1fr;
+    }
+
+    .service-detail-card-services {
+        padding: 1.5rem;
+    }
+}
