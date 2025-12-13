@@ -66,7 +66,7 @@
     display: inline-block;
 }
 
-.section-title-after-about {
+.section-title-about::after {
     content: '';
     position: absolute;
     bottom: -10px;
@@ -403,4 +403,22 @@
         text-align: center;
     }
 
+    .section-title-about,
+    .contact-title-about,
+    .about-text-h2-about,
+    .form-title-about {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .section-title-about::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .section-title-about {
+        display: block;
+        text-align: center;
+    }
 }
