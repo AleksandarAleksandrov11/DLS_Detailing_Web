@@ -88,8 +88,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             await emailjs.send(
-                "service_q6rbwie",
-                "template_jn1rxfb",
+                "service_8h46z8p",
+                "template_pcq0h6o",
                 data
             );
 

@@ -2,7 +2,7 @@ console.log("Cargando EmailJS...");
 
 document.addEventListener("DOMContentLoaded", () => {
     emailjs.init({
-        publicKey: "-7iES4wNDIw5RIkR_",
+        publicKey: "OM1X-CYb1Bt9RH62U",
     });
     console.log("EmailJS inicializado (v4)");
 });
