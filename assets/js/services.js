@@ -76,43 +76,5 @@ document.addEventListener("DOMContentLoaded", () => {
         return `${d}/${m}/${y}`;
     }
 
-    // ===== SPINNER =====
-    function setLoading(isLoading) {
-        if (isLoading) {
-            submitBtn.disabled = true;
-            submitBtn.classList.add("loading");
-            btnText.textContent = "Enviando...";
-        } else {
-            submitBtn.disabled = false;
-            submitBtn.classList.remove("loading");
-            btnText.textContent = "SOLICITAR PRESUPUESTO";
-        }
-    }
-
-    // ===== SUBMIT =====
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        setLoading(true);
-
-        try {
-            // 👉 AQUÍ va tu código actual:
-            // subir imágenes (Cloudinary)
-            // enviar EmailJS
-
-            btnText.textContent = "ENVIANDO ↻";
-            submitBtn.classList.remove("loading");
-
-            setTimeout(() => {
-                form.reset();
-                setLoading(false);
-            }, 1500);
-
-        } catch (error) {
-            console.error("Error enviando formulario:", error);
-            alert("Error al enviar el presupuesto");
-            setLoading(false);
-        }
-    });
 
 });
