@@ -74,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const name = document.getElementById("name").value.trim() || "Sin nombre";
         const phoneRaw = document.getElementById("phone").value.replace(/\D/g, "");
         const date = document.getElementById("date").value || "No seleccionada";
+        const finalPrice = "XXX€";
         function formatDate(date) {
             if (!date) return "";
             const [y, m, d] = date.split("-");
@@ -88,9 +89,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const whatsappMessage = encodeURIComponent(
             `Hola ${name} 👋
 
-Tras revisar las imágenes y el estado del vehículo, el precio final del servicio *${serviceText}* es de *XXX€*.
+Tras revisar las imágenes y el estado del vehículo, el precio final del servicio *${serviceText}* es de *${finalPrice}*.
 
-📅 Fecha: ${formatDate}
+📅 Fecha: ${formatDate(date)}
 ⏰ Hora: ${time}
 
 Si todo está correcto, confirmamos la reserva con esos datos.
