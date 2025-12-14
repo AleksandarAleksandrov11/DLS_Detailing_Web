@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const submitBtn = form.querySelector("button[type='submit']");
 
-    // Creamos un span para el texto si no existe
+    // ===== TEXTO BOTÓN =====
     let btnText = submitBtn.querySelector("span");
     if (!btnText) {
         btnText = document.createElement("span");
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         submitBtn.appendChild(btnText);
     }
 
-    // Asegurarnos de que no haya spinner al inicio
+    // Asegurar que no haya spinner al inicio
     let spinner = submitBtn.querySelector(".spinner");
     if (spinner) spinner.remove();
 
@@ -34,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
             submitBtn.disabled = true;
             submitBtn.classList.add("loading");
 
-            // Crear spinner solo si no existe
             spinner = document.createElement("span");
             spinner.className = "spinner";
             submitBtn.insertBefore(spinner, btnText);
@@ -71,17 +70,48 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        // ===== DATOS =====
+        const name = document.getElementById("name").value.trim() || "Sin nombre";
+        const phoneRaw = document.getElementById("phone").value.replace(/\D/g, "");
+        const date = document.getElementById("date").value || "No seleccionada";
+        const time = document.getElementById("time").value || "No seleccionada";
+        const serviceText = serviceSelect
+            ? serviceSelect.options[serviceSelect.selectedIndex].text
+            : "No indicado";
+
+        // ===== MENSAJE WHATSAPP =====
+        const whatsappMessage = encodeURIComponent(
+            `Hola ${name} 👋
+
+Tras revisar las imágenes y el estado del vehículo, el precio final del servicio *${serviceText}* es de *${servicePrice.textContent}*.
+
+📅 Fecha: ${date}
+⏰ Hora: ${time}
+
+Si todo está correcto, confirmamos la reserva con esos datos.
+Para cualquier cambio o duda, escríbenos sin problema.
+
+— DLS Detailing`
+                    );
+
+        const whatsappLink = phoneRaw
+            ? `https://wa.me/34${phoneRaw}?text=${whatsappMessage}`
+            : "No disponible";
+
         const data = {
-            name: document.getElementById("name").value.trim() || "Sin nombre",
+            name: name,
             phone: document.getElementById("phone").value.trim() || "Sin teléfono",
-            service: serviceSelect ? serviceSelect.options[serviceSelect.selectedIndex].text : "No indicado",
-            domicilioService: domicilioSelect && domicilioSelect.value ? domicilioSelect.options[domicilioSelect.selectedIndex].text : "No aplica",
+            service: serviceText,
+            domicilioService: domicilioSelect && domicilioSelect.value
+                ? domicilioSelect.options[domicilioSelect.selectedIndex].text
+                : "No aplica",
             carModel: document.getElementById("carModel").value.trim() || "No especificado",
             date: document.getElementById("date").value || "No seleccionada",
             time: document.getElementById("time").value || "No seleccionada",
             notes: document.getElementById("notes").value.trim() || "Sin notas",
             images: imageLinks,
-            price: servicePrice ? servicePrice.textContent : "No indicado"
+            price: servicePrice ? servicePrice.textContent : "No indicado",
+            whatsappLink: whatsappLink
         };
 
         console.log("Datos enviados a EmailJS:", data);
@@ -94,6 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
             btnText.textContent = "✔ Enviado";
+
             setTimeout(() => {
                 form.reset();
                 if (servicePrice) servicePrice.textContent = "Precio orientativo: —";
