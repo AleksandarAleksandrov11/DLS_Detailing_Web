@@ -74,6 +74,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const name = document.getElementById("name").value.trim() || "Sin nombre";
         const phoneRaw = document.getElementById("phone").value.replace(/\D/g, "");
         const date = document.getElementById("date").value || "No seleccionada";
+        function formatDate(date) {
+            if (!date) return "";
+            const [y, m, d] = date.split("-");
+            return `${d}/${m}/${y}`;
+        }
         const time = document.getElementById("time").value || "No seleccionada";
         const serviceText = serviceSelect
             ? serviceSelect.options[serviceSelect.selectedIndex].text
@@ -83,16 +88,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const whatsappMessage = encodeURIComponent(
             `Hola ${name} 👋
 
-Tras revisar las imágenes y el estado del vehículo, el precio final del servicio *${serviceText}* es de *${servicePrice.textContent}*.
+Tras revisar las imágenes y el estado del vehículo, el precio final del servicio *${serviceText}* es de *XXX€*.
 
-📅 Fecha: ${date}
+📅 Fecha: ${formatDate}
 ⏰ Hora: ${time}
 
 Si todo está correcto, confirmamos la reserva con esos datos.
 Para cualquier cambio o duda, escríbenos sin problema.
 
 — DLS Detailing`
-                    );
+        );
 
         const whatsappLink = phoneRaw
             ? `https://wa.me/34${phoneRaw}?text=${whatsappMessage}`
