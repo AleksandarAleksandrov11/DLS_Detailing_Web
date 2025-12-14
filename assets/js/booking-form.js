@@ -42,6 +42,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 ? domicilioSelect.options[domicilioSelect.selectedIndex].text
                 : "No aplica",
             carModel: document.getElementById("carModel").value.trim(),
+
+            date: document.getElementById("date").value,
+            time: document.getElementById("time").value,
+
             notes: document.getElementById("notes").value.trim() || "Sin notas",
             images: imageLinks,
             price: servicePrice ? servicePrice.textContent : "No indicado"

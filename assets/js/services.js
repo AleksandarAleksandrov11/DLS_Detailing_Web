@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const domicilioNotice = document.getElementById("domicilioNotice");
     const servicePrice = document.getElementById("servicePrice");
 
+    const dateInput = document.getElementById("date");
+    const today = new Date().toISOString().split("T")[0];
+    dateInput.min = today;
+
     // Precios orientativos
     const prices = {
         integral: "Desde 144€",
