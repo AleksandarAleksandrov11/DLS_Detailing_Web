@@ -177,7 +177,7 @@
                                 <div class="contact-icon-about">✉️</div>
                                 <div class="contact-text-about">
                                     <h3>Email</h3>
-                                    <a href="mailto:info@dsldetailing.com">contacto@dlsdetailing.com</a>
+                                    <a href="mailto:info@dsldetailing.com">dlsdetailing1@gmail.com</a>
                                 </div>
                             </li>
                             <li class="contact-item-about">
@@ -272,12 +272,16 @@
 
                             <div class="form-group-about">
                                 <label for="time" class="form-label-about">Hora *</label>
-                                <input type="time" id="time" name="time" class="form-input-about" required>
+                                <select id="time" name="time" class="form-input-about" required></select>
                             </div>
+                            <p class="warning-text">
+                                ℹ️ La fecha y hora solicitadas están sujetas a disponibilidad. Nos pondremos en contacto 
+                                con usted para confirmar.
+                            </p>
 
                             <div class="form-group-about">
                                 <label for="carImages" class="form-label-about">
-                                    Fotos del Estado Actual (Opcional)
+                                    Fotos del Estado Actual *
                                 </label>
 
                                 <input type="file" id="carImages" name="carImages" class="form-file-input-about"
@@ -287,6 +291,10 @@
                                     <span>Seleccionar imágenes</span>
                                     <small class="file-upload-text-about">Máx. 5 imágenes (JPG / PNG)</small>
                                 </label>
+                                <p class="warning-text">
+                                    ℹ️ Necesitamos estas fotos para evaluar el estado del vehículo y ofrecerte un precio
+                                    real.
+                                </p>
 
                                 <div class="file-list-about" id="fileList"></div>
                             </div>
@@ -298,7 +306,7 @@
                             </div>
 
                             <!-- Aviso precio final -->
-                            <p class="form-info-about price-final-note">
+                            <p class="warning-text">
                                 ℹ️ El precio final dependerá del estado y las condiciones del vehículo.
                             </p>
 
@@ -404,7 +412,7 @@
                             </svg>
                         </div>
                         <div class="contact-text">
-                            <strong>contacto@dlsdetailing.com</strong>
+                            <strong>dlsdetailing1@gmail.com</strong>
                         </div>
                     </li>
                     <li>

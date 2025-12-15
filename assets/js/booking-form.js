@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
         submitBtn.appendChild(btnText);
     }
 
-    // Asegurar que no haya spinner al inicio
     let spinner = submitBtn.querySelector(".spinner");
     if (spinner) spinner.remove();
 
@@ -28,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const servicePrice = document.getElementById("servicePrice");
     const fileInput = document.getElementById("carImages");
 
-    // ===== SPINNER =====
     function setLoading(isLoading) {
         if (isLoading) {
             submitBtn.disabled = true;
@@ -48,46 +46,42 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // ===== SUBMIT =====
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
-        console.log("Formulario enviado");
-
         setLoading(true);
 
         let imageLinks = "No se adjuntaron imágenes";
 
         try {
             if (fileInput && fileInput.files.length > 0) {
-                console.log("Subiendo imágenes...");
                 const urls = await uploadImages(fileInput.files);
                 imageLinks = urls.join("\n");
             }
-        } catch (uploadError) {
-            console.error("Error subiendo imágenes:", uploadError);
+        } catch (err) {
             alert("Error al subir las imágenes");
             setLoading(false);
             return;
         }
 
-        // ===== DATOS =====
         const name = document.getElementById("name").value.trim() || "Sin nombre";
         const phoneRaw = document.getElementById("phone").value.replace(/\D/g, "");
         const date = document.getElementById("date").value || "No seleccionada";
+        const time = document.getElementById("time").value || "No seleccionada";
         const finalPrice = "XXX€";
+
         function formatDate(date) {
             if (!date) return "";
             const [y, m, d] = date.split("-");
             return `${d}/${m}/${y}`;
         }
-        const time = document.getElementById("time").value || "No seleccionada";
+
         const serviceText = serviceSelect
             ? serviceSelect.options[serviceSelect.selectedIndex].text
             : "No indicado";
 
-        // ===== MENSAJE WHATSAPP =====
+        // ===== MENSAJE WHATSAPP NORMAL =====
         const whatsappMessage = encodeURIComponent(
-            `Hola ${name} 👋
+`Hola ${name} 👋
 
 Tras revisar las imágenes y el estado del vehículo, el precio final del servicio *${serviceText}* es de *${finalPrice}*.
 
@@ -95,7 +89,6 @@ Tras revisar las imágenes y el estado del vehículo, el precio final del servic
 ⏰ Hora: ${time}
 
 Si todo está correcto, confirmamos la reserva con esos datos.
-Para cualquier cambio o duda, escríbenos sin problema.
 
 — DLS Detailing`
         );
@@ -104,23 +97,44 @@ Para cualquier cambio o duda, escríbenos sin problema.
             ? `https://wa.me/34${phoneRaw}?text=${whatsappMessage}`
             : "No disponible";
 
+        // ===== MENSAJE WHATSAPP CAMBIO DE FECHA =====
+        const whatsappChangeDateMessage = encodeURIComponent(
+`Hola ${name} 👋
+
+Gracias por tu solicitud para el servicio *${serviceText}*.
+
+Tras revisar las imágenes y el estado del vehículo, el precio final sería de *${finalPrice}*.
+
+En la fecha y hora solicitadas no tenemos disponibilidad, pero podemos proponerte una nueva:
+
+📅 Nueva fecha: XX/XX/XXXX
+⏰ Nueva hora: XX:XX
+
+Dinos si te encaja o si prefieres otra opción.
+
+— DLS Detailing`
+        );
+
+        const whatsappChangeDateLink = phoneRaw
+            ? `https://wa.me/34${phoneRaw}?text=${whatsappChangeDateMessage}`
+            : "No disponible";
+
         const data = {
             name: name,
             phone: document.getElementById("phone").value.trim() || "Sin teléfono",
             service: serviceText,
-            domicilioService: domicilioSelect && domicilioSelect.value
+            domicilioService: domicilioSelect
                 ? domicilioSelect.options[domicilioSelect.selectedIndex].text
                 : "No aplica",
             carModel: document.getElementById("carModel").value.trim() || "No especificado",
-            date: document.getElementById("date").value || "No seleccionada",
-            time: document.getElementById("time").value || "No seleccionada",
+            date: date,
+            time: time,
             notes: document.getElementById("notes").value.trim() || "Sin notas",
             images: imageLinks,
             price: servicePrice ? servicePrice.textContent : "No indicado",
-            whatsappLink: whatsappLink
+            whatsappLink: whatsappLink,
+            whatsappChangeDateLink: whatsappChangeDateLink
         };
-
-        console.log("Datos enviados a EmailJS:", data);
 
         try {
             await emailjs.send(
@@ -138,8 +152,7 @@ Para cualquier cambio o duda, escríbenos sin problema.
             }, 1500);
 
         } catch (error) {
-            console.error("ERROR EMAILJS:", error);
-            alert("Error al enviar la solicitud. Revisa la consola.");
+            alert("Error al enviar la solicitud");
             setLoading(false);
         }
     });
