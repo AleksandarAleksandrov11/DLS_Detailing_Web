@@ -52,34 +52,62 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ===== PRECIOS =====
     const prices = {
-        integral: "Desde 144€",
-        interior: "Desde 99€",
-        basico: "Desde 39€",
-        asientos: "Desde 54€",
-        pulido: "Desde 70€",
-        domicilio: "Desde 50€"
+        integral: 144,
+        interior: 99,
+        basico: 39,
+        asientos: 54,
+        pulido: 70,
+        domicilio: 50 // extra domicilio
     };
 
-    // ===== SERVICIO =====
+    // ===== DURACIONES =====
+    const durations = {
+        integral: "4h",
+        interior: "2h",
+        basico: "1h",
+        asientos: "1.5h",
+        pulido: "3h",
+        domicilio: "Xh"
+    };
+
+    // ===== SERVICIO PRINCIPAL =====
     serviceSelect.addEventListener("change", () => {
         const selectedService = serviceSelect.value;
 
-        servicePrice.textContent = prices[selectedService]
-            ? `Precio orientativo: ${prices[selectedService]}`
-            : "Precio orientativo: —";
-
         if (selectedService === "domicilio") {
+            // Mostrar select de servicio final
             domicilioGroup && (domicilioGroup.style.display = "block");
             domicilioNotice && (domicilioNotice.style.display = "block");
             domicilioSelect?.setAttribute("required", "required");
+
+            // Precio y duración temporal para domicilio
+            servicePrice.textContent = `Precio orientativo: Desde ${prices.domicilio}€ · Duración aprox: ${durations.domicilio}`;
         } else {
+            // Ocultar select de servicio final
             domicilioGroup && (domicilioGroup.style.display = "none");
             domicilioNotice && (domicilioNotice.style.display = "none");
             if (domicilioSelect) {
                 domicilioSelect.removeAttribute("required");
                 domicilioSelect.value = "";
             }
+
+            // Precio y duración normales
+            const priceText = prices[selectedService] ? `Desde ${prices[selectedService]}€` : "—";
+            const durationText = durations[selectedService] ? durations[selectedService] : "—";
+            servicePrice.textContent = `Precio orientativo: ${priceText} · Duración aprox: ${durationText}`;
         }
+    });
+
+    // ===== SERVICIO FINAL A DOMICILIO =====
+    domicilioSelect?.addEventListener("change", () => {
+        const finalService = domicilioSelect.value;
+        if (!finalService) return;
+
+        const basePrice = prices[finalService] || 0;
+        const totalPrice = basePrice + prices.domicilio; // sumar extra domicilio
+        const durationText = durations[finalService] || "—";
+
+        servicePrice.textContent = `Precio orientativo: Desde ${totalPrice}€ · Duración aprox: ${durationText}`;
     });
 
     // ===== FORMATO FECHA / HORA =====
@@ -97,6 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return `${d}/${m}/${y}`;
     }
 
+    // ===== SUBIDA DE IMÁGENES =====
     const fileInput = document.getElementById("carImages");
     const fileList = document.getElementById("fileList");
 
@@ -159,7 +188,5 @@ document.addEventListener("DOMContentLoaded", () => {
         storedFiles.forEach(file => dataTransfer.items.add(file));
         fileInput.files = dataTransfer.files;
     }
-
-
 
 });
