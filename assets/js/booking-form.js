@@ -20,39 +20,57 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const serviceSelect = document.getElementById("service");
     const domicilioSelect = document.getElementById("domicilioService");
+    const ceramicSelect = document.getElementById("ceramicProtection");
+    const ceramicGroup = document.getElementById("ceramicProtectionGroup");
     const servicePrice = document.getElementById("servicePrice");
     const fileInput = document.getElementById("carImages");
 
-    // Campo oculto para guardar servicio principal
-    let mainServiceInput = document.getElementById("mainService");
-    if (!mainServiceInput) {
-        mainServiceInput = document.createElement("input");
-        mainServiceInput.type = "hidden";
-        mainServiceInput.id = "mainService";
-        form.appendChild(mainServiceInput);
+    // ===== SERVICIO FINAL REAL =====
+    function getFinalService() {
+        return serviceSelect.value === "domicilio" ? domicilioSelect.value || null : serviceSelect.value;
+    }
+
+    // ===== PRECIOS =====
+    const prices = {
+        integral: 149,
+        interior: 119,
+        basico: 39,
+        asientos: 55,
+        pulidoFaros: 49,
+        pulido1: 219,
+        pulido2: 319,
+        pulido3: 499,
+        domicilio: 30
+    };
+
+    // ===== CERÁMICA =====
+    const ceramicPrices = {
+        "1year": 50,
+        "5years": 105,
+        "7years": 140
+    };
+    const ceramicServices = ["pulido1", "pulido2", "pulido3"];
+    function shouldShowCeramic() {
+        return ceramicServices.includes(getFinalService());
+    }
+    function getCeramicExtra() {
+        return ceramicPrices[ceramicSelect?.value] || 0;
     }
 
     // ===== DURACIONES =====
     const durations = {
-        integral: "4h",
-        interior: "2h",
-        basico: "1h",
-        asientos: "1.5h",
-        pulido: "3h",
+        integral: "4-7h",
+        interior: "3-5h",
+        basico: "1-2h",
+        asientos: "1-2h",
+        pulidoFaros: "1-2h",
+        pulido1: "6-8h",
+        pulido2: "8-12h",
+        pulido3: "24-72h",
         domicilio: "Xh"
     };
 
-    // ===== PRECIOS =====
-    const prices = {
-        integral: 144,
-        interior: 99,
-        basico: 39,
-        asientos: 54,
-        pulido: 70,
-        domicilio: 50 // extra domicilio
-    };
-
-    // ===== FUNCIONES BOTÓN =====
+    // ===== BOTÓN =====
     function setLoading(isLoading) {
         if (isLoading) {
             submitBtn.disabled = true;
@@ -69,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Mensaje de confirmación
+    // ===== MENSAJE CONFIRMACIÓN =====
     const confirmationMessage = document.createElement("div");
     confirmationMessage.className = "confirmation-message";
     confirmationMessage.style.marginTop = "10px";
@@ -78,51 +96,54 @@ document.addEventListener("DOMContentLoaded", () => {
     confirmationMessage.style.display = "none";
     submitBtn.insertAdjacentElement("afterend", confirmationMessage);
 
-    // ===== FUNCIONES PARA ACTUALIZAR PRECIO Y DURACIÓN =====
+    // ===== ACTUALIZAR PRECIO Y DURACIÓN =====
     function updatePriceAndDuration() {
         const selectedService = serviceSelect.value;
+        const finalService = getFinalService();
+        let ceramicExtra = ceramicServices.includes(finalService) ? getCeramicExtra() : 0;
 
         let priceText = "—";
         let durationText = "—";
 
         if (selectedService === "domicilio") {
-            durationText = durations.domicilio;
-            priceText = `Desde ${prices.domicilio}€`;
-
-            const finalService = domicilioSelect.value;
             if (finalService) {
                 durationText = durations[finalService];
-                priceText = `Desde ${prices[finalService] + prices.domicilio}€`;
+                priceText = `Desde ${prices[finalService] + prices.domicilio + ceramicExtra}€`;
             }
         } else {
             durationText = durations[selectedService];
-            priceText = `Desde ${prices[selectedService]}€`;
+            priceText = `Desde ${prices[selectedService] + ceramicExtra}€`;
         }
 
         servicePrice.textContent = `Precio orientativo: ${priceText} · Duración aprox: ${durationText}`;
     }
 
     // ===== EVENTOS =====
-    serviceSelect.addEventListener("change", () => {
-        const selectedService = serviceSelect.value;
-
-        if (selectedService !== "domicilio") mainServiceInput.value = selectedService;
-
-        if (selectedService === "domicilio") {
-            domicilioSelect?.setAttribute("required", "required");
+    function handleServiceChange() {
+        if (serviceSelect.value === "domicilio") {
+            domicilioSelect.setAttribute("required", "required");
             document.getElementById("domicilioServiceGroup").style.display = "block";
             document.getElementById("domicilioNotice").style.display = "block";
         } else {
-            domicilioSelect?.removeAttribute("required");
+            domicilioSelect.removeAttribute("required");
+            domicilioSelect.value = "";
             document.getElementById("domicilioServiceGroup").style.display = "none";
             document.getElementById("domicilioNotice").style.display = "none";
-            domicilioSelect.value = "";
+        }
+
+        if (shouldShowCeramic()) {
+            ceramicGroup.style.display = "block";
+        } else {
+            ceramicGroup.style.display = "none";
+            ceramicSelect.value = "";
         }
 
         updatePriceAndDuration();
-    });
+    }
 
-    domicilioSelect?.addEventListener("change", updatePriceAndDuration);
+    serviceSelect.addEventListener("change", handleServiceChange);
+    domicilioSelect.addEventListener("change", handleServiceChange);
+    ceramicSelect.addEventListener("change", updatePriceAndDuration);
 
     // ===== FORMATO FECHA =====
     function formatDate(date) {
@@ -142,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const urls = await uploadImages(fileInput.files);
                 imageLinks = urls.join("\n");
             }
-        } catch (err) {
+        } catch {
             alert("Error al subir las imágenes");
             setLoading(false);
             return;
@@ -152,25 +173,28 @@ document.addEventListener("DOMContentLoaded", () => {
         const phoneRaw = document.getElementById("phone").value.replace(/\D/g, "");
         const date = document.getElementById("date").value || "No seleccionada";
         const time = document.getElementById("time").value || "No seleccionada";
-        const selectedService = serviceSelect.value;
-        const serviceText = serviceSelect.options[serviceSelect.selectedIndex]?.text || "No indicado";
 
-        // Determinar precio y duración final para email y WhatsApp
-        let finalPrice, serviceDuration;
+        const selectedService = serviceSelect.value;
+        const finalService = getFinalService();
+        const serviceText = serviceSelect.options[serviceSelect.selectedIndex]?.text || "No indicado";
+        const ceramicText = ceramicSelect?.options[ceramicSelect.selectedIndex]?.text || "Sin protección cerámica";
+
+        let finalPrice = 0;
+        let serviceDuration = "";
+
         if (selectedService === "domicilio") {
-            const finalService = domicilioSelect.value || "domicilio";
             serviceDuration = durations[finalService];
-            finalPrice = `Desde ${prices[finalService] + prices.domicilio}€`;
+            finalPrice = prices[finalService] + prices.domicilio + (ceramicServices.includes(finalService) ? getCeramicExtra() : 0);
         } else {
             serviceDuration = durations[selectedService];
-            finalPrice = `Desde ${prices[selectedService]}€`;
+            finalPrice = prices[selectedService] + (ceramicServices.includes(finalService) ? getCeramicExtra() : 0);
         }
 
-        // Mensajes WhatsApp
+        // ===== MENSAJES WHATSAPP =====
         const whatsappMessage = encodeURIComponent(
             `Hola ${name} 👋
 
-Tras revisar las imágenes y el estado del vehículo, el precio final del servicio *${serviceText}* es de *${finalPrice}*.
+Tras revisar las imágenes y el estado del vehículo, el precio final del servicio *${serviceText}* es de *${finalPrice}€*.
 
 📅 Fecha: ${formatDate(date)}
 ⏰ Hora: ${time}
@@ -181,14 +205,12 @@ Si todo está correcto, confirmamos la reserva con esos datos.
 — DLS Detailing`
         );
 
-        const whatsappLink = phoneRaw ? `https://wa.me/34${phoneRaw}?text=${whatsappMessage}` : "No disponible";
-
         const whatsappChangeDateMessage = encodeURIComponent(
             `Hola ${name} 👋
 
 Gracias por tu solicitud para el servicio *${serviceText}*.
 
-Tras revisar las imágenes y el estado del vehículo, el precio final sería de *${finalPrice}*.
+Tras revisar las imágenes y el estado del vehículo, el precio final sería de *${finalPrice}€*.
 
 En la fecha y hora solicitadas no tenemos disponibilidad, pero podemos proponerte una nueva:
 
@@ -201,23 +223,24 @@ Dinos si te encaja o si prefieres otra opción.
 — DLS Detailing`
         );
 
+        const whatsappLink = phoneRaw ? `https://wa.me/34${phoneRaw}?text=${whatsappMessage}` : "No disponible";
         const whatsappChangeDateLink = phoneRaw ? `https://wa.me/34${phoneRaw}?text=${whatsappChangeDateMessage}` : "No disponible";
 
-        // Datos para EmailJS
         const data = {
-            name: name,
+            name,
             phone: document.getElementById("phone").value.trim() || "Sin teléfono",
             service: serviceText,
+            ceramic: ceramicText,
             duration: serviceDuration,
             domicilioService: domicilioSelect ? domicilioSelect.options[domicilioSelect.selectedIndex].text : "No aplica",
             carModel: document.getElementById("carModel").value.trim() || "No especificado",
-            date: date,
-            time: time,
+            date,
+            time,
             notes: document.getElementById("notes").value.trim() || "Sin notas",
             images: imageLinks,
-            price: finalPrice,
-            whatsappLink: whatsappLink,
-            whatsappChangeDateLink: whatsappChangeDateLink
+            price: `Desde ${finalPrice}€`,
+            whatsappLink,
+            whatsappChangeDateLink
         };
 
         try {
@@ -229,12 +252,12 @@ Dinos si te encaja o si prefieres otra opción.
 
             setTimeout(() => {
                 form.reset();
-                if (servicePrice) servicePrice.textContent = "Precio orientativo: —";
-                mainServiceInput.value = "";
+                servicePrice.textContent = "Precio orientativo: —";
+                ceramicGroup.style.display = "none";
                 setLoading(false);
             }, 1500);
 
-        } catch (error) {
+        } catch {
             alert("Error al enviar la solicitud");
             setLoading(false);
         }

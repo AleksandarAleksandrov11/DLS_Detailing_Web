@@ -52,21 +52,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ===== PRECIOS =====
     const prices = {
-        integral: 144,
-        interior: 99,
+        integral: 149,
+        interior: 119,
         basico: 39,
-        asientos: 54,
-        pulido: 70,
-        domicilio: 50 // extra domicilio
+        asientos: 55,
+        pulidoFaros: 49,
+        pulido1: 219,
+        pulido2: 319,
+        pulido3: 499,
+        domicilio: 30
     };
 
     // ===== DURACIONES =====
     const durations = {
-        integral: "4h",
-        interior: "2h",
-        basico: "1h",
-        asientos: "1.5h",
-        pulido: "3h",
+        integral: "4-7h",
+        interior: "3-5h",
+        basico: "1-2h",
+        asientos: "1-2h",
+        pulidoFaros: "1-2h",
+        pulido1: "6-8h",
+        pulido2: "8-12h",
+        pulido3: "24-72h",
         domicilio: "Xh"
     };
 

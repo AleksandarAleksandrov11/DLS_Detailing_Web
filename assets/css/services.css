@@ -251,6 +251,45 @@
     z-index: -1;
 }
 
+.service-card-services:nth-child(7)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../img/pulido1.JPG') no-repeat center center;
+    background-size: cover;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.service-card-services:nth-child(8)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../img/pulido2.JPG') no-repeat center center;
+    background-size: cover;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.service-card-services:nth-child(9)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../img/pulido3.JPG') no-repeat center center;
+    background-size: cover;
+    opacity: 0.3;
+    z-index: -1;
+}
+
 .services-details-section-services {
     padding: 4rem 2rem;
     max-width: 1200px;
@@ -406,7 +445,7 @@
 }
 
 @media (max-width: 992px) {
-        .services-section-services {
+    .services-section-services {
         padding: 2rem 1rem;
     }
 

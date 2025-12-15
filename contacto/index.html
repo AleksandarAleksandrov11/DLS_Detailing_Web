@@ -232,7 +232,10 @@
                                     <option value="interior">Detallado Interior</option>
                                     <option value="basico">Lavado Básico</option>
                                     <option value="asientos">Lavado de Asientos</option>
-                                    <option value="pulido">Pulido de Faros</option>
+                                    <option value="pulidoFaros">Pulido de Faros</option>
+                                    <option value="pulido1">Pulido de Cerámica en 1 Paso</option>
+                                    <option value="pulido2">Pulido de Cerámica en 2 Pasos</option>
+                                    <option value="pulido3">Pulido de Cerámica en 3 Pasos</option>
                                     <option value="domicilio">Servicio a Domicilio</option>
                                 </select>
 
@@ -251,11 +254,34 @@
                                     <option value="interior">Detallado Interior</option>
                                     <option value="basico">Lavado Básico</option>
                                     <option value="asientos">Lavado de Asientos</option>
+                                    <option value="pulidoFaros">Pulido de Faros</option>
+                                    <option value="pulido1">Pulido de Cerámica en 1 Paso</option>
+                                    <option value="pulido2">Pulido de Cerámica en 2 Pasos</option>
+                                    <option value="pulido3">Pulido de Cerámica en 3 Pasos</option>
                                 </select>
 
                                 <p class="warning-text" id="domicilioNotice">
                                     ⚠️ El servicio a domicilio puede conllevar un suplemento según distancia y
                                     condiciones.
+                                </p>
+                            </div>
+
+                            <!-- PROTECCIÓN CERÁMICA OPCIONAL -->
+                            <div class="form-group-about" id="ceramicProtectionGroup" style="display:none;">
+                                <label for="ceramicProtection" class="form-label-about">
+                                    Protección Cerámica Opcional
+                                </label>
+
+                                <select id="ceramicProtection" name="ceramicProtection" class="form-select-about">
+                                    <option value="">Sin protección cerámica</option>
+                                    <option value="1year">Protección cerámica 1 año (+50€)</option>
+                                    <option value="5years">Protección cerámica 5 años (+105€)</option>
+                                    <option value="7years">Protección cerámica 7 años (+140€)</option>
+                                </select>
+
+                                <p class="warning-text">
+                                    ℹ️ La protección cerámica prolonga el brillo, facilita la limpieza y protege la
+                                    pintura frente a agentes externos.
                                 </p>
                             </div>
 
@@ -275,7 +301,7 @@
                                 <select id="time" name="time" class="form-input-about" required></select>
                             </div>
                             <p class="warning-text">
-                                ℹ️ La fecha y hora solicitadas están sujetas a disponibilidad. Nos pondremos en contacto 
+                                ℹ️ La fecha y hora solicitadas están sujetas a disponibilidad. Nos pondremos en contacto
                                 con usted para confirmar.
                             </p>
 
@@ -369,12 +395,13 @@
             <div class="footer-column">
                 <h3 class="footer-title">Servicios</h3>
                 <ul class="footer-links">
-                    <li><a href="../servicios/index.html#detallado-integral1">Detallado Integral</a></li>
-                    <li><a href="../servicios/index.html#detallado-integral1">Detallado Interior</a></li>
-                    <li><a href="../servicios/index.html#detallado-integral1">Lavado Básico</a></li>
-                    <li><a href="../servicios/index.html#detallado-integral1">Lavado De Asientos</a></li>
-                    <li><a href="../servicios/index.html#detallado-integral1">Servicio A Domicilio</a></li>
-                    <li><a href="../servicios/index.html#detallado-integral1">Pulido De faros</a></li>
+                    <li><a href="../servicios/index.html#detallado-inte">Detallado Integral</a></li>
+                    <li><a href="../servicios/index.html#detallado-interior1">Detallado Interior</a></li>
+                    <li><a href="../servicios/index.html#lavado-basico1">Lavado Básico</a></li>
+                    <li><a href="../servicios/index.html#lavado-asientos1">Lavado De Asientos</a></li>
+                    <li><a href="../servicios/index.html#servicio-domicilio1">Servicio A Domicilio</a></li>
+                    <li><a href="../servicios/index.html#pulido-faros1">Pulido De faros</a></li>
+                    <li><a href="../servicios/index.html#pulido-ceramica-1">Pulido De Cerámica</a></li>
                 </ul>
             </div>
 
